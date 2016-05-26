@@ -1,0 +1,262 @@
+# vim:fdm=marker
+
+# Arc Darker i3 configuration
+# Created by Alex Booker with modifications by Bytewave
+
+# Variables {{{
+
+## Modifier key (Win/Super)
+set $mod mod4
+
+## Workspace names
+set $workspace1 "1 "
+set $workspace2 "2 "
+set $workspace3 "3 "
+set $workspace4 "4 "
+set $workspace5 "5 "
+set $worksapce6 "6 "
+set $workspace7 "7 "
+set $workspace8 "8 "
+set $workspace9 "9 "
+set $workspace0 "0 "
+
+## Color scheme
+set $bg-color 	         #2f343f
+set $inactive-bg-color   #2f343f
+set $text-color          #f3f4f5
+set $inactive-text-color #676E7D
+set $urgent-bg-color     #E53935
+
+## i3 gaps
+set $inner-gaps 10
+set $outer-gaps 10
+
+## Mode names
+set $mode-system System (l) lock, (e) logout, (r) reboot, (s) shutdown
+set $mode-resize Resize
+
+## Fonts
+set $fonts SFNS Display 10, FontAwesome 10
+
+# }}}
+
+# Appearance {{{
+
+# Font {{{
+
+font pango:$fonts
+
+# }}}
+
+# i3-gaps {{{
+
+gaps inner $inner-gaps
+gaps outer $outer-gaps
+
+# }}}
+
+# Colors {{{
+
+#                       border              background         text                 indicator
+client.focused          $bg-color           $bg-color          $text-color          #00ff00
+client.unfocused        $inactive-bg-color  $inactive-bg-color $inactive-text-color #00ff00
+client.focused_inactive $inactive-bg-color  $inactive-bg-color $inactive-text-color #00ff00
+client.urgent           $urgent-bg-color    $urgent-bg-color   $text-color          #00ff00
+
+# }}}
+
+# Bar {{{
+
+bar {
+	i3bar_command i3bar -t
+  	status_command i3blocks -c ~/.config/i3/i3blocks.conf
+	colors {
+		background $bg-color
+		separator #757575
+		#                  border             background         text
+		focused_workspace  $bg-color          $bg-color          $text-color
+		inactive_workspace $inactive-bg-color $inactive-bg-color $inactive-text-color
+		urgent_workspace   $urgent-bg-color   $urgent-bg-color   $text-color
+	}
+}
+
+# }}}
+
+# }}}
+
+# Keybindings {{{
+
+## General i3 bindings
+# Reload configuration, restart i3 in-place
+bindsym $mod+Shift+t reload
+bindsym $mod+Shift+r restart
+# Layout switching
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout toggle split
+# Switch focus
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
+# Toggle floating
+bindsym $mod+Shift+space floating toggle
+# Toggle sticky
+bindsym $mod+Shift+s sticky toggle
+# Toggle border
+bindsym $mod+Shift+b border toggle
+# Kill window
+bindsym $mod+Shift+q kill
+# Switch focus between tiled or floating windows
+bindsym $mod+space focus mode_toggle
+# Focus on parent container
+bindsym $mod+a focus parent
+# Split container (horizontal, vertical)
+bindsym $mod+b split h
+bindsym $mod+v split v
+# Workspace switching
+bindsym $mod+1 workspace $workspace1
+bindsym $mod+2 workspace $workspace2
+bindsym $mod+3 workspace $workspace3
+bindsym $mod+4 workspace $workspace4
+bindsym $mod+5 workspace $workspace5
+bindsym $mod+6 workspace $workspace6
+bindsym $mod+7 workspace $workspace7
+bindsym $mod+8 workspace $workspace8
+bindsym $mod+9 workspace $workspace9
+bindsym $mod+0 workspace $workspace0
+# Window moving
+bindsym $mod+Shift+1 move container to workspace $workspace1
+bindsym $mod+Shift+2 move container to workspace $workspace2
+bindsym $mod+Shift+3 move container to workspace $workspace3
+bindsym $mod+Shift+4 move container to workspace $workspace4
+bindsym $mod+Shift+5 move container to workspace $workspace5
+bindsym $mod+Shift+6 move container to workspace $workspace6
+bindsym $mod+Shift+7 move container to workspace $workspace7
+bindsym $mod+Shift+8 move container to workspace $workspace8
+bindsym $mod+Shift+9 move container to workspace $workspace9
+bindsym $mod+Shift+0 move container to workspace $workspace0
+# Focus moving
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
+# Floating window modifier key
+floating_modifier $mod
+# Rofi
+bindsym $mod+d exec rofi -show run -lines 5 -eh 2 -width 100 -padding 450 -opacity "85" -bw 0 -bc "$bg-color" -bg "$bg-color" -fg "$text-color" -hlbg "$bg-color" -hlfg "#9575cd" -font "System San Francisco Display 18"
+
+## Mode bindings
+# Resize
+bindsym $mod+r mode "$mode-resize"
+# System
+bindsym $mod+Pause mode "$mode-system"
+
+## Media keys
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 1 +5% #increase sound volume
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 1 -5% #decrease sound volume
+bindsym XF86AudioMute        exec --no-startup-id pactl set-sink-mute 1 toggle # mute sound
+bindsym XF86AudioPlay        exec playerctl play-pause
+bindsym XF86AudioPause       exec playerctl play-pause
+bindsym XF86AudioNext        exec playerctl next
+bindsym XF86AudioPrev        exec playerctl previous
+
+## Application binds
+bindsym $mod+Shift+f exec thunar
+bindsym $mod+Shift+c exec google-chrome
+bindsym $mod+Return  exec xfce4-terminal
+
+## scrot binds (ugly)
+# Fullscreen
+bindsym Print exec scrot '%Y-%m-%d--%H-%M-%S.png' --exec 'mv $f ~/Pictures/screenshots/ && imgur ~/Pictures/screenshots/$f && notify-send -t 2000 "Screenshot uploaded to Imgur!" && aplay ~/bin/done.wav'
+# Window
+bindsym $mod+Print exec scrot '%Y-%m-%d--%H-%M-%S-window.png' --focused --exec 'mv $f ~/Pictures/screenshots/ && imgur ~/Pictures/screenshots/$f && notify-send -t 2000 "Screenshot uploaded to Imgur!" && aplay ~/bin/done.wav'
+# Selection
+bindsym --release $mod+Shift+Print exec scrot '%Y-%m-%d--%H-%M-%S-selection.png' --select --exec 'mv $f ~/Pictures/screenshots/ && imgur ~/Pictures/screenshots/$n && notify-send -t 2000 "Screenshot uploaded to Imgur!" && aplay ~/bin/done.wav'
+
+# }}}
+
+# Modes {{{
+
+mode "$mode-resize" {
+	bindsym h resize shrink width 10 px or 10 ppt
+	bindsym j resize grow height 10 px or 10 ppt
+	bindsym k resize shrink height 10 px or 10 ppt
+	bindsym l resize grow width 10 px or 10 ppt
+
+	bindsym Left resize shrink width 10 px or 10 ppt
+	bindsym Down resize grow height 10 px or 10 ppt
+	bindsym Up resize shrink height 10 px or 10 ppt
+	bindsym Right resize grow width 10 px or 10 ppt
+
+	bindsym Return mode "default"
+	bindsym Escape mode "default"
+}
+
+mode "$mode-system" {
+	bindsym l exec --no-startup-id i3exit lock, mode "default"
+	bindsym e exec --no-startup-id i3exit logout, mode "default"
+	# bindsym s exec --no-startup-id i3exit suspend, mode "default"
+	# bindsym h exec --no-startup-id i3exit hibernate, mode "default"
+	bindsym r exec --no-startup-id i3exit reboot, mode "default"
+	bindsym s exec --no-startup-id i3exit shutdown, mode "default"
+
+	# back to normal: Enter or Escape
+	bindsym Return mode "default"
+	bindsym Escape mode "default"
+}
+
+# }}}
+
+# Window Assignments {{{
+
+# Specific {{{
+
+# Floating {{{
+
+for_window [class="Pavucontrol"] floating enable
+for_window [title=".+ \- Chat$"] floating enable
+for_window [title=".+ \- event started$"] floating enable
+
+# }}}
+
+# Workspace {{{
+
+assign [class="Steam"] $workspace9
+assign [title=".+ \- OpenGL"] $workspace4
+
+# }}}
+
+# }}}
+
+# Generic {{{
+
+## Make i3-gaps happy
+new_window pixel 0
+new_float pixel 0
+
+# }}}
+
+# }}}
+
+# Startup Applications {{{
+
+# Exec on login (exec) {{{
+
+## Make dunst happy
+exec --no-startup-id killall -q notify-osd
+exec --no-startup-id dunst -config ~/.config/dunst/dunstrc
+
+# }}}
+
+# Exec on login/reload (exec_always) {{{
+
+## Compton compositor with fade
+exec_always --no-startup-id compton -f
+
+## Feh background
+exec_always --no-startup-id ~/.fehbg
+
+# }}}
+
+# }}}

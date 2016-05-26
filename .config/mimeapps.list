@@ -1,0 +1,20 @@
+[Default Applications]
+x-scheme-handler/http=google-chrome.desktop
+text/html=google-chrome.desktop
+text/xml=google-chrome.desktop
+application/xhtml_xml=google-chrome.desktop
+image/webp=google-chrome.desktop
+x-scheme-handler/https=google-chrome.desktop
+x-scheme-handler/ftp=google-chrome.desktop
+x-scheme-handler/about=google-chrome.desktop
+x-scheme-handler/unknown=google-chrome.desktop
+
+[Added Associations]
+text/html=google-chrome.desktop;
+text/xml=google-chrome.desktop;
+application/xhtml_xml=google-chrome.desktop;
+image/webp=google-chrome.desktop;
+x-scheme-handler/https=exo-web-browser.desktop
+x-scheme-handler/ftp=google-chrome.desktop;
+text/plain=gedit.desktop;vim.desktop;
+x-scheme-handler/http=exo-web-browser.desktop
