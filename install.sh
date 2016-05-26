@@ -29,14 +29,18 @@ ask() {
 dir=`pwd`
 
 if ask "Install symlink for .zshrc?" Y; then
-	ln -sf ${dir}/.zshrc ${HOME}/.zshrc
-	ln -sf ${dir}/.aliases.sh ${HOME}/.aliases.sh
+	ln -s ${dir}/.zshrc ${HOME}/.zshrc
+	ln -s ${dir}/.aliases.sh ${HOME}/.aliases.sh
 fi
 
 if ask "Install symlink for .config/nvim?" Y; then
-	ln -sfn ${dir}/.config/nvim ${HOME}/.config/nvim
+	ln -s ${dir}/.config/nvim ${HOME}/.config/nvim
 fi
 
 if ask "Install symlink for i3?" Y; then
-	ln -sfn ${dir}/.config/i3 ${HOME}/.config/i3
+	ln -s ${dir}/.config/i3 ${HOME}/.config/i3
+fi
+
+if ask "Install symlink for bin?" Y; then
+	ln -s ${dir}/bin/* ${HOME}/bin/
 fi
