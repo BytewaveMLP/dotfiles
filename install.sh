@@ -30,17 +30,12 @@ dir=`pwd`
 
 if ask "Install symlink for .zshrc?" Y; then
 	ln -s ${dir}/.zshrc ${HOME}/.zshrc
-	ln -s ${dir}/.aliases.sh ${HOME}/.aliases.sh
 fi
 
-if ask "Install symlink for .config/nvim?" Y; then
-	ln -s ${dir}/.config/nvim ${HOME}/.config/nvim
+if ask "Install symlinks for .config/?" Y; then
+	ln -s ${dir}/.config/* ${HOME}/.config/
 fi
 
-if ask "Install symlink for i3?" Y; then
-	ln -s ${dir}/.config/i3 ${HOME}/.config/i3
-fi
-
-if ask "Install symlink for bin?" Y; then
+if ask "Install symlinks for bin/?" Y; then
 	ln -s ${dir}/bin/* ${HOME}/bin/
 fi
