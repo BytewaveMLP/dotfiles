@@ -107,6 +107,8 @@ bindsym $mod+Shift+s sticky toggle
 bindsym $mod+Shift+b border toggle
 # Kill window
 bindsym $mod+Shift+q kill
+# Fullscreen window
+bindsym $mod+f fullscreen toggle
 # Switch focus between tiled or floating windows
 bindsym $mod+space focus mode_toggle
 # Focus on parent container
