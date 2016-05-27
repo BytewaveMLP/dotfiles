@@ -32,8 +32,8 @@ set $inner-gaps 10
 set $outer-gaps 10
 
 ## Mode names
-set $mode-system System (l) lock, (e) logout, (r) reboot, (s) shutdown
-set $mode-resize Resize
+set $mode-system "  "
+set $mode-resize "  "
 
 ## Fonts
 set $fonts SFNS Display 10, FontAwesome 10
@@ -150,9 +150,9 @@ bindsym $mod+d exec rofi -show run -lines 5 -eh 2 -width 100 -padding 450 -opaci
 
 ## Mode bindings
 # Resize
-bindsym $mod+r mode "$mode-resize"
+bindsym $mod+r mode $mode-resize
 # System
-bindsym $mod+Pause mode "$mode-system"
+bindsym $mod+Pause mode $mode-system
 
 ## Media keys
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 1 +5% #increase sound volume
@@ -180,7 +180,7 @@ bindsym --release $mod+Shift+Print exec scrot '%Y-%m-%d--%H-%M-%S-selection.png'
 
 # Modes {{{
 
-mode "$mode-resize" {
+mode $mode-resize {
 	bindsym h resize shrink width 10 px or 10 ppt
 	bindsym j resize grow height 10 px or 10 ppt
 	bindsym k resize shrink height 10 px or 10 ppt
@@ -195,7 +195,7 @@ mode "$mode-resize" {
 	bindsym Escape mode "default"
 }
 
-mode "$mode-system" {
+mode $mode-system {
 	bindsym l exec --no-startup-id i3exit lock, mode "default"
 	bindsym e exec --no-startup-id i3exit logout, mode "default"
 	# bindsym s exec --no-startup-id i3exit suspend, mode "default"
