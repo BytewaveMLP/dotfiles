@@ -36,7 +36,7 @@ set $mode-system "  "
 set $mode-resize "  "
 
 ## Fonts
-set $fonts SFNS Display 10, FontAwesome 10
+set $fonts SFNS Display 11, FontAwesome 12
 
 # }}}
 
