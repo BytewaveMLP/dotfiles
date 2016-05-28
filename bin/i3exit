@@ -1,6 +1,6 @@
 #!/bin/sh
 lock() {
-    i3lock
+	locker.sh
 }
 
 case "$1" in
