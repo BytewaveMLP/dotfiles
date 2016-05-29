@@ -11,3 +11,7 @@ Credit to Alex Booker ([@alexbooker](https://github.com/alexbooker)) for:
 
 - i3 Arc-Darker theme and i3-related dotfiles
 - install.sh logic
+
+Credit to [@Anachron](https://github.com/Anachron) for:
+
+- [dunstrc](/.config/dunst/dunstrc)
