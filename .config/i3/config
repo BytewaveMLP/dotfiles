@@ -166,7 +166,7 @@ bindsym $mod+Shift+f exec thunar
 bindsym $mod+Shift+c exec google-chrome
 bindsym $mod+Return  exec xfce4-terminal
 # Rofi
-bindsym $mod+d exec rofi -show run -lines 5 -eh 2 -width 100 -padding 450 -opacity "85" -bw 0 -bc "$bg-color" -bg "$bg-color" -fg "$text-color" -hlbg "$bg-color" -hlfg "#9575cd" -font "System San Francisco Display 18
+bindsym $mod+d exec rofi -show run -lines 5 -eh 2 -width 100 -padding 450 -opacity "85" -bw 0 -bc "$bg-color" -bg "$bg-color" -fg "$text-color" -hlbg "$bg-color" -hlfg "#9575cd" -font "System San Francisco Display 18"
 # toggle-lock
 bindsym $mod+x exec toggle-lock
 
@@ -250,6 +250,8 @@ new_float pixel 0
 ## Make dunst happy
 exec --no-startup-id killall -q notify-osd
 exec --no-startup-id dunst -config ~/.config/dunst/dunstrc
+## Autolock
+exec --no-startup-id i3-msg "xautolock -time 10 -locker /home/bw81/bin/locker.sh -detectsleep"
 
 # }}}
 
