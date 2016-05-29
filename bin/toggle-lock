@@ -25,5 +25,5 @@ if [ -z "$1" ] ; then
 elif [ "$1" = "--status" ] ; then
 	echo "do_lock = $do_lock"
 else
-	echo "Usage: `basename '$0'` [--status]"
+	echo "Usage: $(basename "$0") [--status]"
 fi
