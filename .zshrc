@@ -1,5 +1,11 @@
 # Bytewave's .zshrc
 
+if [ ! -d $HOME/.oh-my-zsh ]; then
+	echo "oh-my-zsh is not installed!"
+	echo "Downloading and installing..."
+	git clone git://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
+fi
+
 export EDITOR="nvim"
 export VISUAL="$EDITOR"
 export BROWSER="/usr/bin/google-chrome"
