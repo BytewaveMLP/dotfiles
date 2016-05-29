@@ -10,14 +10,20 @@ else
 	do_lock=`cat /tmp/$USER/do_lock`
 fi
 
-if [ "$do_lock" = true ] ; then
-	do_lock=false
-	xset -dpms
-	xautolock -disable
-else
-	do_lock=true
-	xset +dpms
-	xautolock -enable
-fi
+if [ -z "$1" ] ; then
+	if [ "$do_lock" = true ] ; then
+		do_lock=false
+		xset -dpms
+		xautolock -disable
+	else
+		do_lock=true
+		xset +dpms
+		xautolock -enable
+	fi
 
-echo "$do_lock" > /tmp/$USER/do_lock
+	echo "$do_lock" > /tmp/$USER/do_lock
+elif [ "$1" = "--status" ] ; then
+	echo "do_lock = $do_lock"
+else
+	echo "Usage: `basename '$0'` [--status]"
+fi
