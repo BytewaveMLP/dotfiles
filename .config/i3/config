@@ -145,8 +145,6 @@ bindsym $mod+k focus up
 bindsym $mod+l focus right
 # Floating window modifier key
 floating_modifier $mod
-# Rofi
-bindsym $mod+d exec rofi -show run -lines 5 -eh 2 -width 100 -padding 450 -opacity "85" -bw 0 -bc "$bg-color" -bg "$bg-color" -fg "$text-color" -hlbg "$bg-color" -hlfg "#9575cd" -font "System San Francisco Display 18"
 
 ## Mode bindings
 # Resize
@@ -167,6 +165,11 @@ bindsym XF86AudioPrev        exec playerctl previous
 bindsym $mod+Shift+f exec thunar
 bindsym $mod+Shift+c exec google-chrome
 bindsym $mod+Return  exec xfce4-terminal
+# Rofi
+bindsym $mod+d exec rofi -show run -lines 5 -eh 2 -width 100 -padding 450 -opacity "85" -bw 0 -bc "$bg-color" -bg "$bg-color" -fg "$text-color" -hlbg "$bg-color" -hlfg "#9575cd" -font "System San Francisco Display 18"
+# Lock toggle script
+bindsym $mod+x       exec toggle-lock
+bindsym $mod+Shift+x exec notify-send -t 2000 "$(toggle-lock --status)"
 
 ## scrot binds (ugly)
 # Fullscreen
