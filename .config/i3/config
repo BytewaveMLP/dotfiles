@@ -168,8 +168,8 @@ bindsym $mod+Return  exec xfce4-terminal
 # Rofi
 bindsym $mod+d exec rofi -show run -lines 5 -eh 2 -width 100 -padding 450 -opacity "85" -bw 0 -bc "$bg-color" -bg "$bg-color" -fg "$text-color" -hlbg "$bg-color" -hlfg "#9575cd" -font "System San Francisco Display 18"
 # Lock toggle script
-bindsym $mod+x       exec toggle-lock
-bindsym $mod+Shift+x exec notify-send -t 2000 "$(toggle-lock --status)"
+bindsym $mod+x       exec toggle-lock && notify-send -t 2000 -u critical "$(toggle-lock --status)"
+bindsym $mod+Shift+x exec notify-send -t 2000 -u low "$(toggle-lock --status)"
 
 ## scrot binds (ugly)
 # Fullscreen
