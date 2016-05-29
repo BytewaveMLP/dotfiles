@@ -1,9 +1,13 @@
 #!/bin/sh
 
-if [ ! -f "/tmp/do_lock" ] ; then
+if [ ! -d "/tmp/$USER/" ] ; then
+	mkdir /tmp/$USER/
+fi
+
+if [ ! -f "/tmp/$USER/do_lock" ] ; then
 	do_lock=true
 else
-	do_lock=`cat /tmp/do_lock`
+	do_lock=`cat /tmp/$USER/do_lock`
 fi
 
 if [ "$do_lock" = true ] ; then
@@ -16,4 +20,4 @@ else
 	xautolock -enable
 fi
 
-echo "$do_lock" > /tmp/do_lock
+echo "$do_lock" > /tmp/$USER/do_lock
