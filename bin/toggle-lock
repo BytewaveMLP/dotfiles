@@ -1,0 +1,19 @@
+#!/bin/sh
+
+if [ ! -f "/tmp/do_lock" ] ; then
+	do_lock=true
+else
+	do_lock=`cat /tmp/do_lock`
+fi
+
+if [ "$do_lock" = true ] ; then
+	do_lock=false
+	xset -dpms
+	xautolock -disable
+else
+	do_lock=true
+	xset +dpms
+	xautolock -enable
+fi
+
+echo "$do_lock" > /tmp/do_lock
