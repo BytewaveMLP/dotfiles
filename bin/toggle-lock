@@ -23,7 +23,7 @@ if [ -z "$1" ] ; then
 
 	echo "$do_lock" > /tmp/$USER/do_lock
 elif [ "$1" = "--status" ] ; then
-	echo "do_lock = $do_lock"
+	echo "$do_lock"
 else
 	echo "Usage: $(basename "$0") [--status]"
 fi
