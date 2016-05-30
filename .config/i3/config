@@ -156,10 +156,10 @@ bindsym $mod+Pause mode $mode-system
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 1 +5% #increase sound volume
 bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 1 -5% #decrease sound volume
 bindsym XF86AudioMute        exec --no-startup-id pactl set-sink-mute 1 toggle # mute sound
-bindsym XF86AudioPlay        exec playerctl play-pause
-bindsym XF86AudioPause       exec playerctl play-pause
-bindsym XF86AudioNext        exec playerctl next
-bindsym XF86AudioPrev        exec playerctl previous
+bindsym XF86AudioPlay        exec --no-startup-id playerctl play-pause
+bindsym XF86AudioPause       exec --no-startup-id playerctl play-pause
+bindsym XF86AudioNext        exec --no-startup-id playerctl next
+bindsym XF86AudioPrev        exec --no-startup-id playerctl previous
 
 ## Application binds
 bindsym $mod+Shift+f exec thunar
