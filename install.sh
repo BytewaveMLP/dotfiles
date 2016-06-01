@@ -37,5 +37,10 @@ if ask "Install symlinks for .config/?" Y; then
 fi
 
 if ask "Install symlinks for bin/?" Y; then
+	if [ ! -d "${HOME}/bin/" ] ; then
+		echo "No ~/bin directory. Creating..."
+		mkdir ${HOME}/bin/
+	fi
+
 	ln -s ${dir}/bin/* ${HOME}/bin/
 fi
