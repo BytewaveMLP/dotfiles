@@ -29,13 +29,7 @@ ask() {
 dir=`pwd`
 
 if ask "Install symlink for .zshrc?" Y; then
-	if [ -f "${HOME}/.zshrc" ] ; then
-		if ask ".zshrc already exists. Replace?" Y; then
-			mv ${HOME}/.zshrc ${HOME}/.zshrc.pre-dotfiles
-		fi
-	fi
-
-	ln -s ${dir}/.zshrc ${HOME}/.zshrc
+	ln -si ${dir}/.zshrc ${HOME}/.zshrc
 fi
 
 if ask "Install symlinks for .config/?" Y; then
@@ -45,7 +39,7 @@ if ask "Install symlinks for .config/?" Y; then
 		fi
 	fi
 
-	ln -s ${dir}/.config/* ${HOME}/.config/
+	ln -si ${dir}/.config/* ${HOME}/.config/
 fi
 
 if ask "Install symlinks for bin/?" Y; then
@@ -55,5 +49,5 @@ if ask "Install symlinks for bin/?" Y; then
 		fi
 	fi
 
-	ln -s ${dir}/bin/* ${HOME}/bin/
+	ln -si ${dir}/bin/* ${HOME}/bin/
 fi
