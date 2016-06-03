@@ -251,7 +251,7 @@ new_float pixel 0
 exec --no-startup-id killall -q notify-osd
 exec --no-startup-id dunst -config ~/.config/dunst/dunstrc
 ## Autolock
-exec --no-startup-id i3-msg "xautolock -time 10 -locker /home/bw81/bin/locker.sh -detectsleep"
+exec --no-startup-id i3-msg "exec xautolock -time 10 -locker /home/bw81/bin/locker.sh -detectsleep"
 
 # }}}
 
