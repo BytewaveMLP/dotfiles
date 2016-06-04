@@ -103,8 +103,8 @@ bindsym $mod+Shift+l move right
 bindsym $mod+Shift+space floating toggle
 # Toggle sticky
 bindsym $mod+Shift+s sticky toggle
-# Toggle border (no longer necessary!)
-# bindsym $mod+Shift+b border toggle
+# Toggle border
+bindsym $mod+Shift+b border toggle
 # Kill window
 bindsym $mod+Shift+q kill
 # Fullscreen window
@@ -236,9 +236,9 @@ assign [title=".+ \- OpenGL"] $workspace4
 
 # Generic {{{
 
-## Make i3-gaps happy (no longer necessary!)
-# new_window pixel 0
-# new_float pixel 0
+## Make i3-gaps happy
+new_window pixel 0
+new_float pixel 0
 
 # }}}
 
