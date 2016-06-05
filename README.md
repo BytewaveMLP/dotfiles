@@ -18,4 +18,4 @@ Credit to [@Anachron](https://github.com/Anachron) for:
 
 Credit to [@TDLive](https://github.com/TDLive) for:
 
-- [Pointing out my typos](491144f39cf986170f0c8e445d80442e34c19206)
+- Pointing out my typos... 491144f39cf986170f0c8e445d80442e34c19206
