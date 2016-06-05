@@ -15,3 +15,7 @@ Credit to Alex Booker ([@alexbooker](https://github.com/alexbooker)) for:
 Credit to [@Anachron](https://github.com/Anachron) for:
 
 - [dunstrc](/.config/dunst/dunstrc)
+
+Credit to [@TDLive](https://github.com/TDLive) for:
+
+- [Pointing out my typos](491144f39cf986170f0c8e445d80442e34c19206)
