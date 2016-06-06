@@ -51,3 +51,9 @@ if ask "Install symlinks for bin/?" Y; then
 
 	ln -si ${dir}/bin/* ${HOME}/bin/
 fi
+
+if ask "Install Neobundle for Neovim?" Y; then
+	curl https://raw.githubusercontent.com/Shougo/neobundle.vim/master/bin/install.sh > ${HOME}/neobundle-install.sh
+	sh ${HOME}/neobundle-install.sh
+	rm ${HOME}/neobundle-install.sh
+fi
