@@ -16,8 +16,6 @@ echo -e "\n"
 printf "\033[mBytewave's dotfiles install script"
 echo -e "\n"
 
-set -e
-
 # Source: https://gist.github.com/davejamesmiller/1965569
 ask() {
 	while true; do
