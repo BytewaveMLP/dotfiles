@@ -23,6 +23,7 @@ NeoBundle 'Xuyuanp/nerdtree-git-plugin'
 NeoBundle 'vim-airline/vim-airline'
 NeoBundle 'vim-airline/vim-airline-themes'
 NeoBundle 'chriskempson/base16-vim'
+NeoBundle 'wakatime/vim-wakatime'
 NeoBundleLazy 'plasticboy/vim-markdown', {'on_ft': 'markdown'}
 NeoBundleLazy 'dhruvasagar/vim-table-mode', {'on_ft': 'markdown'}
 
@@ -61,6 +62,10 @@ function! NERDTreeQuit()
 endfunction
 autocmd WinEnter * call NERDTreeQuit()
 autocmd VimEnter * wincmd w
+autocmd BufNewFile,BufRead *.html iabbrev </ </<C-X><C-O>
+autocmd BufNewFile,BufRead *.php iabbrev </ </<C-X><C-O>
+autocmd BufNewFile,BufRead *.htm iabbrev </ </<C-X><C-O>
+autocmd BufNewFile,BufRead *.twig iabbrev </ </<C-X><C-O>
 
 set background=dark
 colorscheme base16-ocean
