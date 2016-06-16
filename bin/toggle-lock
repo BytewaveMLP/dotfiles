@@ -1,5 +1,10 @@
 #!/bin/sh
 
+usage() {
+	echo "Usage: $(basename "$0") [options]\n"
+	echo "--status\tPrints the current status of the autolocker (true if on, false if off)"
+}
+
 if [ ! -d "/tmp/$USER/" ] ; then
 	mkdir /tmp/$USER/
 fi
@@ -25,5 +30,5 @@ if [ -z "$1" ] ; then
 elif [ "$1" = "--status" ] ; then
 	echo "$do_lock"
 else
-	echo "Usage: $(basename "$0") [--status]"
+	usage
 fi
