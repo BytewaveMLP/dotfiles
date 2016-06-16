@@ -46,6 +46,10 @@ if ask "Install symlink for .zshrc?" Y; then
 	ln -si ${dir}/.zshrc ${HOME}/.zshrc
 fi
 
+if ask "Install symlink for .xprofile?" Y; then
+	ln -si ${dir}/.xprofile ${HOME}/.xprofile
+fi
+
 if ask "Install symlinks for .config/?" Y; then
 	if [ ! -d "${HOME}/.config" ] ; then
 		if ask "~/.config does not exist. Create?" Y; then

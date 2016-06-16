@@ -164,7 +164,7 @@ bindsym XF86AudioPrev        exec --no-startup-id playerctl previous
 ## Application binds
 bindsym $mod+Shift+f exec thunar
 bindsym $mod+Shift+c exec google-chrome
-bindsym $mod+Return  exec xfce4-terminal
+bindsym $mod+Return  exec i3-sensible-terminal
 # Rofi
 bindsym $mod+d exec rofi -show run -lines 5 -eh 2 -width 100 -padding 450 -opacity "85" -bw 0 -bc "$bg-color" -bg "$bg-color" -fg "$text-color" -hlbg "$bg-color" -hlfg "#9575cd" -font "System San Francisco Display 18"
 # toggle-lock
