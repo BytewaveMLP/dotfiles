@@ -38,6 +38,9 @@ set $mode-resize "  "
 ## Fonts
 set $fonts SFNS Display 11, FontAwesome 12
 
+## Compton
+set $compton-opts -f
+
 # }}}
 
 # Appearance {{{
@@ -170,6 +173,9 @@ bindsym $mod+d exec rofi -show run -lines 5 -eh 2 -width 100 -padding 450 -opaci
 # toggle-lock
 bindsym $mod+x exec toggle-lock
 bindsym $mod+Shift+x exec xautolock -locknow
+# compton
+bindsym $mod+grave exec compton $compton-opts
+bindsym $mod+Shift+grave exec killall compton
 
 ## scrot binds (ugly)
 # Fullscreen
@@ -259,7 +265,7 @@ exec --no-startup-id i3-msg "exec xautolock -time 10 -locker /home/bw81/bin/lock
 # Exec on login/reload (exec_always) {{{
 
 ## Compton compositor with fade
-exec_always --no-startup-id compton -f
+exec_always --no-startup-id compton $compton-opts
 
 ## Feh background
 exec_always --no-startup-id ~/.fehbg
