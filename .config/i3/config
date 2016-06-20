@@ -259,7 +259,7 @@ exec --no-startup-id i3-msg "exec xautolock -time 10 -locker /home/bw81/bin/lock
 # Exec on login/reload (exec_always) {{{
 
 ## Compton compositor with fade
-# exec_always --no-startup-id compton -f
+exec_always --no-startup-id compton -f
 
 ## Feh background
 exec_always --no-startup-id ~/.fehbg
