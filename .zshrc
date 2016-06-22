@@ -71,9 +71,6 @@ plugins=(git command-not-found debian theme vagrant zsh-wakatime zsh-syntax-high
 
 # User configuration
 
-  export PATH="/opt/turtl:$HOME/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/local/games:/usr/games"
-# export MANPATH="/usr/local/man:$MANPATH"
-
 source $ZSH/oh-my-zsh.sh
 
 # You may need to manually set your language environment
