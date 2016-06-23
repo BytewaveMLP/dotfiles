@@ -228,6 +228,7 @@ mode $mode-system {
 for_window [class="Pavucontrol"] floating enable
 for_window [title=".+ \- Chat$"] floating enable
 for_window [title=".+ \- event started$"] floating enable
+for_window [class="keybase"] floating enable
 
 # }}}
 
