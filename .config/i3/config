@@ -1,4 +1,4 @@
-# vim:fdm=marker
+# svim:fdm=marker
 
 # Arc Darker i3 configuration
 # Created by Alex Booker with modifications by Bytewave
@@ -229,6 +229,7 @@ for_window [class="Pavucontrol"] floating enable
 for_window [title=".+ \- Chat$"] floating enable
 for_window [title=".+ \- event started$"] floating enable
 for_window [class="keybase"] floating enable
+for_window [class="Keybase"] floating enable
 
 # }}}
 
