@@ -75,3 +75,7 @@ if ask "Install Neobundle for Neovim?" Y; then
 	sh ${HOME}/neobundle-install.sh
 	rm ${HOME}/neobundle-install.sh
 fi
+
+if ask "Install wallpaper?" N; then
+	ln -si ${dir}/.wallpaper.png ${HOME}/.wallpaper.png
+fi
