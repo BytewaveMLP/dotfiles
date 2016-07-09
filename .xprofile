@@ -1,2 +1,1 @@
-PATH="/opt/turtl:$PATH"
-TERMINAL="xfce4-terminal"
+TERMINAL="termite"

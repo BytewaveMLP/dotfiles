@@ -39,7 +39,7 @@ set $mode-resize "  "
 set $fonts SFNS Display 11, FontAwesome 12
 
 ## Compton
-set $compton-opts -f
+set $compton-opts -fCG
 
 # }}}
 
@@ -73,6 +73,7 @@ client.urgent           $urgent-bg-color    $urgent-bg-color   $text-color      
 bar {
 	i3bar_command i3bar -t
   	status_command i3blocks -c ~/.config/i3/i3blocks.conf
+	tray_output primary
 	colors {
 		background $bg-color
 		separator #757575
@@ -166,10 +167,10 @@ bindsym XF86AudioPrev        exec --no-startup-id playerctl previous
 
 ## Application binds
 bindsym $mod+Shift+f exec thunar
-bindsym $mod+Shift+c exec google-chrome
+bindsym $mod+Shift+c exec google-chrome-stable
 bindsym $mod+Return  exec i3-sensible-terminal
 # Rofi
-bindsym $mod+d exec rofi -show run -lines 5 -eh 2 -width 100 -padding 450 -opacity "85" -bw 0 -bc "$bg-color" -bg "$bg-color" -fg "$text-color" -hlbg "$bg-color" -hlfg "#9575cd" -font "System San Francisco Display 18"
+bindsym $mod+d exec "rofi -show run -lines 5 -eh 2 -width 100 -padding 450 -opacity 85 -bw 0 -color-enabled -color-normal '$bg-color,$text-color,$bg-color,$bg-color,#9575cd' -color-window '$bg-color,$bg-color' -font 'SFNS Display 18'"
 # toggle-lock
 bindsym $mod+x exec toggle-lock
 bindsym $mod+Shift+x exec xautolock -locknow
@@ -256,18 +257,18 @@ new_float pixel 0
 
 # Exec on login (exec) {{{
 
-## Make dunst happy
-exec --no-startup-id killall -q notify-osd
+## dunst
 exec --no-startup-id dunst -config ~/.config/dunst/dunstrc
 ## Autolock
 exec --no-startup-id i3-msg "exec xautolock -time 10 -locker /home/bw81/bin/locker.sh -detectsleep"
+## xrandr
+exec --no-startup-id xrandr --output HDMI-0 --primary
+## Compton compositor with fade
+exec --no-startup-id compton $compton-opts
 
 # }}}
 
 # Exec on login/reload (exec_always) {{{
-
-## Compton compositor with fade
-exec_always --no-startup-id compton $compton-opts
 
 ## Feh background
 exec_always --no-startup-id ~/.fehbg

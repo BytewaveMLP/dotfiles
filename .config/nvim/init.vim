@@ -23,7 +23,6 @@ NeoBundle 'Xuyuanp/nerdtree-git-plugin'
 NeoBundle 'vim-airline/vim-airline'
 NeoBundle 'vim-airline/vim-airline-themes'
 NeoBundle 'chriskempson/base16-vim'
-NeoBundle 'wakatime/vim-wakatime'
 NeoBundleLazy 'plasticboy/vim-markdown', {'on_ft': 'markdown'}
 NeoBundleLazy 'dhruvasagar/vim-table-mode', {'on_ft': 'markdown'}
 

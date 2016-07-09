@@ -8,7 +8,7 @@ fi
 
 export EDITOR="nvim"
 export VISUAL="$EDITOR"
-export BROWSER="/usr/bin/google-chrome"
+export BROWSER="/usr/bin/google-chrome-stable"
 export TERMINAL="xfce4-terminal"
 export PAGER="less"
 
