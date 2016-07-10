@@ -39,7 +39,7 @@ set $mode-resize "  "
 set $fonts SFNS Display 11, FontAwesome 12
 
 ## Compton
-set $compton-opts -fCG
+set $compton-opts -f
 
 # }}}
 
