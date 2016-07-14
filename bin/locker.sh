@@ -1,2 +1,2 @@
 #!/bin/sh
-~/bin/i3lock-fancy/lock -f SFNS-Display 
+/usr/bin/i3lock-fancy -f SFNS-Display
