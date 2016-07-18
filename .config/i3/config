@@ -177,7 +177,8 @@ bindsym $mod+Shift+x exec xautolock -locknow
 # compton
 bindsym $mod+grave exec compton $compton-opts
 bindsym $mod+Shift+grave exec killall compton
-
+# htop
+bindsym Control+Mod1+Delete exec i3-sensible-terminal -e htop -r htop
 ## scrot binds (ugly)
 # Fullscreen
 bindsym Print exec scrot '%Y-%m-%d--%H-%M-%S.png' --exec 'mv $f ~/Pictures/screenshots/ && imgur ~/Pictures/screenshots/$f && notify-send -t 2000 "Screenshot uploaded to Imgur!" && aplay ~/bin/done.wav'
@@ -227,10 +228,11 @@ mode $mode-system {
 # Floating {{{
 
 for_window [class="Pavucontrol"] floating enable
-for_window [title=".+ \- Chat$"] floating enable
-for_window [title=".+ \- event started$"] floating enable
+for_window [class="Steam" title=".+ \- Chat$"] floating enable
+for_window [class="Steam" title=".+ \- event started$"] floating enable
 for_window [class="keybase"] floating enable
 for_window [class="Keybase"] floating enable
+for_window [window_role="htop"] floating enable
 
 # }}}
 
