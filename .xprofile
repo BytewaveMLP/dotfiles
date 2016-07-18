@@ -1,1 +1,1 @@
-TERMINAL="termite"
+export TERMINAL="termite"

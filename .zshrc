@@ -9,7 +9,7 @@ fi
 export EDITOR="nvim"
 export VISUAL="$EDITOR"
 export BROWSER="/usr/bin/google-chrome-stable"
-export TERMINAL="xfce4-terminal"
+export TERMINAL="termite"
 export PAGER="less"
 
 export QT_STYLE_OVERRIDE="gtk"
