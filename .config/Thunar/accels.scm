@@ -26,6 +26,7 @@
 ; (gtk_accel_path "<Actions>/ThunarWindow/view-as-compact-list" "<Primary>3")
 ; (gtk_accel_path "<Actions>/ThunarWindow/view-side-pane-tree" "<Primary>e")
 ; (gtk_accel_path "<Actions>/ThunarStandardView/restore" "")
+; (gtk_accel_path "<Actions>/ThunarBookmarks/9d47a6503c0681c054e2e1305c92932a" "")
 ; (gtk_accel_path "<Actions>/ThunarWindow/open-network" "")
 ; (gtk_accel_path "<Actions>/ThunarWindow/new-tab" "<Primary>t")
 ; (gtk_accel_path "<Actions>/ThunarWindow/preferences" "")
