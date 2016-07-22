@@ -46,6 +46,10 @@ if ask "Install symlink for .zshrc?" Y; then
 	ln -si ${dir}/.zshrc ${HOME}/.zshrc
 fi
 
+if ask "Install symlink for .xinitrc?" Y; then
+	ln -si ${dir}/.xinitrc ${HOME}/.xinitrc
+fi
+
 if ask "Install symlink for .xprofile?" Y; then
 	ln -si ${dir}/.xprofile ${HOME}/.xprofile
 fi
@@ -78,4 +82,5 @@ fi
 
 if ask "Install wallpaper?" N; then
 	ln -si ${dir}/.wallpaper.png ${HOME}/.wallpaper.png
+	ln -si ${dir}/.fehbg ${HOME}/.fehbg
 fi
