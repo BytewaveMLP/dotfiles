@@ -24,12 +24,14 @@ set $workspace0 "0 "
 set $bg-color 	         #2f343f
 set $inactive-bg-color   #2f343f
 set $text-color          #f3f4f5
+set $text-color-2        #B3BDCB
 set $inactive-text-color #676E7D
 set $urgent-bg-color     #E53935
+set $active-text-color   #5294E2
 
 ## i3 gaps
 set $inner-gaps 10
-set $outer-gaps 10
+set $outer-gaps 0
 
 ## Mode names
 set $mode-system "  "
@@ -170,7 +172,8 @@ bindsym $mod+Shift+f exec thunar
 bindsym $mod+Shift+c exec google-chrome-stable
 bindsym $mod+Return  exec i3-sensible-terminal
 # Rofi
-bindsym $mod+d exec "rofi -show run -lines 5 -eh 2 -width 100 -padding 450 -opacity 85 -bw 0 -color-enabled -color-normal '$bg-color,$text-color,$bg-color,$bg-color,#9575cd' -color-window '$bg-color,$bg-color' -font 'SFNS Display 18'"
+bindsym $mod+d exec "rofi -show run -lines 5 -eh 2 -width 100 -padding 450 -opacity 85 -bw 0 -color-enabled -color-normal '$bg-color,$text-color-2,$bg-color,$bg-color,$text-color' -color-window '$bg-color,$bg-color' -font 'SFNS Display 18'"
+bindsym $mod+Tab exec "rofi -show window -lines 5 -eh 2 -width 100 -padding 450 -opacity 85 -bw 0 -color-enabled -color-normal '$bg-color,$text-color-2,$bg-color,$bg-color,$text-color' -color-window '$bg-color,$bg-color' -color-active '$bg-color,$active-text-color,$bg-color,$bg-color,$text-color' -color-urgent '$bg-color,$urgent-bg-color,$bg-color,$bg-color,$text-color' -font 'SFNS Display 18'"
 # toggle-lock
 bindsym $mod+x exec toggle-lock
 bindsym $mod+Shift+x exec xautolock -locknow
