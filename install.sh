@@ -81,6 +81,6 @@ if ask "Install Neobundle for Neovim?" Y; then
 fi
 
 if ask "Install wallpaper?" N; then
-	ln -si ${dir}/.wallpaper.png ${HOME}/.wallpaper.png
+	ln -si ${dir}/.wallpaper.jpg ${HOME}/.wallpaper.jpg
 	ln -si ${dir}/.fehbg ${HOME}/.fehbg
 fi
