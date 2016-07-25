@@ -104,7 +104,7 @@ alias neofetchconfig="$EDITOR ~/.config/neofetch/config"
 alias clear="neofetch"
 alias tree="tree -C"
 alias update-and-reboot="sudo apt update && sudo apt -y dist-upgrade && sudo apt -y autoremove && sudo shutdown -r now"
-alias fortune="fortune | cowsay -f tux"
+alias fortune="fortune | ponysay"
 alias vimim="nvim"
 eval "$(thefuck --alias)"
 
