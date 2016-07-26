@@ -1,0 +1,112 @@
+;=====================================================
+;
+;   To learn more about how to configure Lemonbuddy
+;   go to https://github.com/jaagr/lemonbuddy
+;
+;   The README contains alot of information
+;
+;=====================================================
+
+[settings]
+; Limit the amount of events sent to lemonbar within a set timeframe:
+; - "Allow <throttle_limit> updates within <throttle_ms> of time"
+; Default values:
+;throttle_limit = 5
+;throttle_ms = 50
+
+[bar/top]
+monitor = HDMI-0
+bottom = false
+dock = false
+
+width = 100%
+height = 25
+
+;offset_x = 0
+;offset_y = 0
+
+background = #2f343f
+foreground = #f3f4f5
+;linecolor = #000
+
+spacing = 1
+lineheight = 1
+
+;separator = |
+
+;locale = en_US.UTF-8
+
+padding_left = 0
+padding_right = 0
+module_margin_left = 0
+module_margin_right = 0
+
+font-0 = SFNS Display:size=8;0
+font-1 = FontAwesome:size=10:weight=heavy;0
+
+modules-left = label
+modules-center = i3
+modules-right = cpu ram clock
+
+[module/label]
+type = custom/text
+content = bw81@LUNA-Core
+content-background = #28303A
+content-underline = #5294E2
+;content-overline = #cf4253
+content-padding = 2
+
+[module/cpu]
+type = internal/cpu
+label = CPU: %percentage%
+format-background = #28303A
+format-underline = #5294E2
+format-padding = 2
+
+[module/ram]
+type = internal/memory
+label = RAM: %percentage_used%
+format-background = #28303A
+format-underline = #5294E2
+format-padding = 2
+
+[module/clock]
+type = internal/date
+date = %Y-%m-%d %I:%M %p
+format-background = #28303A
+format-underline = #5294E2
+format-padding = 2
+
+[module/volume]
+type = internal/volume
+;master_mixer = IEC958 
+;speaker_mixer = Speaker
+headphone_mixer = Headphone
+headphone_control_numid = 3
+
+format-volume-background = #933484
+format-volume-underline = #9d6294
+format-volume-overline = #9d6294
+format-volume-padding = 2
+format-muted-background = #933484
+format-muted-underline = #9d6294
+format-muted-overline = #9d6294
+format-muted-padding = 2
+
+label-volume = Volume: %percentage%
+label-muted = Sound is muted
+
+[module/i3]
+type = internal/i3
+;label-focused = 
+label-focused-foreground = #5294E2
+label-focused-background = #28303A
+label-focused-underline = #5294E2
+label-focused-padding = 1
+label-urgent-foreground = #E64545
+;label-unfocused = 
+label-unfocused-padding = 1
+;label-visible = 
+label-visible-padding = 1
+
+; vim:ft=dosini
