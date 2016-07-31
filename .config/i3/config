@@ -38,7 +38,7 @@ set $mode-system "  "
 set $mode-resize "  "
 
 ## Fonts
-set $fonts pango:SFNS Display, pango:FontAwesome 12
+set $fonts pango:SFNS Display, FontAwesome 12
 
 ## Compton
 set $compton-opts -f
