@@ -3,7 +3,10 @@
 if [ ! -d $HOME/.oh-my-zsh ]; then
 	echo "oh-my-zsh is not installed!"
 	echo "Downloading and installing..."
+	echo "Cloning oh-my-zsh..."
 	git clone git://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
+	echo "Cloning plugins (zsh-completions)..."
+	git clone https://github.com/zsh-users/zsh-completions ~/.oh-my-zsh/custom/plugins/zsh-completions
 fi
 
 export EDITOR="nvim"
@@ -67,7 +70,10 @@ COMPLETION_WAITING_DOTS="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
+plugins=(git zsh-completions)
+
+# Reload completions
+autoload -U compinit && compinit
 
 # User configuration
 
