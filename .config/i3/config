@@ -184,11 +184,11 @@ bindsym $mod+Shift+grave exec killall compton
 bindsym Control+Mod1+Delete exec i3-sensible-terminal -e htop -r htop
 ## scrot binds (ugly)
 # Fullscreen
-bindsym Print exec scrot '%Y-%m-%d--%H-%M-%S.png' --exec 'mv $f ~/Pictures/screenshots/ && imgur ~/Pictures/screenshots/$f && notify-send -t 2000 "Screenshot uploaded to Imgur!" && aplay ~/bin/done.wav'
+bindsym Print exec scrot '%Y-%m-%d--%H-%M-%S.png' --exec 'mv $f ~/Pictures/screenshots/ && eeti-upload ~/Pictures/screenshots/$f && notify-send -t 2000 "Screenshot uploaded to eeti!" && aplay ~/bin/done.wav'
 # Window
-bindsym $mod+Print exec scrot '%Y-%m-%d--%H-%M-%S-window.png' --focused --exec 'mv $f ~/Pictures/screenshots/ && imgur ~/Pictures/screenshots/$f && notify-send -t 2000 "Screenshot uploaded to Imgur!" && aplay ~/bin/done.wav'
+bindsym $mod+Print exec scrot '%Y-%m-%d--%H-%M-%S-window.png' --focused --exec 'mv $f ~/Pictures/screenshots/ && eeti-upload ~/Pictures/screenshots/$f && notify-send -t 2000 "Screenshot uploaded to eeti!" && aplay ~/bin/done.wav'
 # Selection
-bindsym --release $mod+Shift+Print exec scrot '%Y-%m-%d--%H-%M-%S-selection.png' --select --exec 'mv $f ~/Pictures/screenshots/ && imgur ~/Pictures/screenshots/$n && notify-send -t 2000 "Screenshot uploaded to Imgur!" && aplay ~/bin/done.wav'
+bindsym --release $mod+Shift+Print exec scrot '%Y-%m-%d--%H-%M-%S-selection.png' --select --exec 'mv $f ~/Pictures/screenshots/ && eeti-upload ~/Pictures/screenshots/$n && notify-send -t 2000 "Screenshot uploaded to eeti!" && aplay ~/bin/done.wav'
 
 # }}}
 
