@@ -1,1 +1,2 @@
 export TERMINAL="termite"
+export QT_STYLE_OVERRIDE="gtk2"
