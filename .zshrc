@@ -104,14 +104,12 @@ source /usr/share/doc/pkgfile/command-not-found.zsh
 #
 # Aliases
 alias zshconfig="$EDITOR ~/.zshrc"
-alias vimconfig="$EDITOR ~/.vimrc"
+alias nvimconfig="$EDITOR ~/.config/nvim/init.vim"
 alias i3config="$EDITOR ~/.config/i3/config"
 alias neofetchconfig="$EDITOR ~/.config/neofetch/config"
 alias clear="neofetch"
 alias tree="tree -C"
-alias update-and-reboot="sudo apt update && sudo apt -y dist-upgrade && sudo apt -y autoremove && sudo shutdown -r now"
 alias fortune="fortune | ponysay"
-alias vimim="nvim"
 eval "$(thefuck --alias)"
 
 # Pretty man pages
