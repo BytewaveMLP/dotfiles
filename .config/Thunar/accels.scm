@@ -34,6 +34,7 @@
 ; (gtk_accel_path "<Actions>/ThunarStandardView/rename" "F2")
 ; (gtk_accel_path "<Actions>/ThunarBookmarks/3a3a281bfc63da57bab0ce11dee0c653" "")
 ; (gtk_accel_path "<Actions>/ThunarBookmarks/f4ac48e65d1d798dc5d9cc0aca1568ff" "")
+; (gtk_accel_path "<Actions>/ThunarBookmarks/18216c8ff75406127f7237b41acf9f41" "")
 ; (gtk_accel_path "<Actions>/ThunarStandardView/sort-by-size" "")
 ; (gtk_accel_path "<Actions>/ThunarWindow/sendto-menu" "")
 ; (gtk_accel_path "<Actions>/ThunarWindow/edit-menu" "")
