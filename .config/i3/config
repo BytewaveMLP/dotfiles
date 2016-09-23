@@ -243,6 +243,7 @@ for_window [window_role="htop"] floating enable
 
 assign [class="Steam"] $workspace9
 assign [title=".+ \- OpenGL"] $workspace4
+assign [class="crx_bikioccmkafdpakkkcpdbppfkghcmihk"] $workspace9 # Signal Messenger
 
 # }}}
 
