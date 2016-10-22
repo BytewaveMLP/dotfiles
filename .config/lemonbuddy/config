@@ -48,6 +48,8 @@ modules-left = userathost
 modules-center = i3
 modules-right = lock cpu ram clock
 
+tray-position = right
+
 [module/userathost]
 type = custom/script
 exec = echo "`whoami`@`hostname`"
