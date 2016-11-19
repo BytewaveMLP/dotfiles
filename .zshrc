@@ -110,6 +110,7 @@ alias neofetchconfig="$EDITOR ~/.config/neofetch/config"
 alias clear="clear; neofetch"
 alias tree="tree -C"
 alias fortune="fortune | ponysay"
+alias l="ls -lah --color"
 eval "$(thefuck --alias)"
 
 # Pretty man pages

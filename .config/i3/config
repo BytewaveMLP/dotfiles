@@ -184,11 +184,11 @@ bindsym $mod+Shift+grave exec killall compton
 bindsym Control+Mod1+Delete exec i3-sensible-terminal -e htop -r htop
 ## scrot binds (ugly)
 # Fullscreen
-bindsym Print exec scrot '%Y-%m-%d--%H-%M-%S.png' --exec 'mv $f ~/Pictures/screenshots/ && ul42l-upload ~/Pictures/screenshots/$f | xclip -sel clip && notify-send -t 2000 "Screenshot uploaded to eeti!" && aplay ~/bin/done.wav'
+bindsym Print exec scrot '%Y-%m-%d--%H-%M-%S.png' --exec 'mv $f ~/Pictures/screenshots/ && ul42l-upload ~/Pictures/screenshots/$f | xclip -sel clip && notify-send -t 2000 "Screenshot uploaded to UL42L!" && aplay ~/bin/done.wav'
 # Window
-bindsym Mod1+Print exec scrot '%Y-%m-%d--%H-%M-%S-window.png' --focused --exec 'mv $f ~/Pictures/screenshots/ && ul42l-upload ~/Pictures/screenshots/$f | xclip -sel clip && notify-send -t 2000 "Screenshot uploaded to eeti!" && aplay ~/bin/done.wav'
+bindsym Mod1+Print exec scrot '%Y-%m-%d--%H-%M-%S-window.png' --focused --exec 'mv $f ~/Pictures/screenshots/ && ul42l-upload ~/Pictures/screenshots/$f | xclip -sel clip && notify-send -t 2000 "Screenshot uploaded to UL42L!" && aplay ~/bin/done.wav'
 # Selection
-bindsym --release Control+Print exec scrot '%Y-%m-%d--%H-%M-%S-selection.png' --select --exec 'mv $f ~/Pictures/screenshots/ && ul42l-upload ~/Pictures/screenshots/$f | xclip -sel clip && notify-send -t 2000 "Screenshot uploaded to eeti!" && aplay ~/bin/done.wav'
+bindsym --release Control+Print exec scrot '%Y-%m-%d--%H-%M-%S-selection.png' --select --exec 'mv $f ~/Pictures/screenshots/ && ul42l-upload ~/Pictures/screenshots/$f | xclip -sel clip && notify-send -t 2000 "Screenshot uploaded to UL42L!" && aplay ~/bin/done.wav'
 
 # }}}
 
