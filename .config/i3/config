@@ -278,8 +278,8 @@ exec --no-startup-id compton $compton-opts
 
 ## Feh background
 exec_always --no-startup-id ~/.fehbg
-## lemonbar
-exec_always ~/bin/lemonbar-restart
+## polybar
+exec_always ~/bin/polybar-restart
 
 # }}}
 
