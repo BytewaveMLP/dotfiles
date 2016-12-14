@@ -111,6 +111,7 @@ alias clear="clear; neofetch"
 alias tree="tree -C"
 alias fortune="fortune | ponysay"
 alias l="ls -lah --color"
+alias ds="du --max-depth=1 -h"
 eval "$(thefuck --alias)"
 
 # Pretty man pages

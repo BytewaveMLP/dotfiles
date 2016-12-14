@@ -80,7 +80,7 @@ menu-0-3-exec = i3exit lock
 
 [module/lock]
 type = custom/script
-exec = status=$(toggle-lock --status); echo "Autolock: $status"
+exec = autolock=$(toggle-lock --status); echo "Autolock: $autolock"
 interval = 1
 format-background = #28303A
 format-underline = #5294E2

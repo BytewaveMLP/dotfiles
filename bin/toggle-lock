@@ -1,8 +1,8 @@
 #!/bin/sh
 
 usage() {
-	echo "Usage: $(basename "$0") [options]\n"
-	echo "--status\tPrints the current status of the autolocker (true if on, false if off)"
+	echo -e "Usage: $(basename "$0") [options]\n"
+	echo -e "  --status\tPrints the current status of the autolocker (true if on, false if off)"
 }
 
 if [ ! -d "/tmp/$USER/" ] ; then
