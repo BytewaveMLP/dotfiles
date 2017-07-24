@@ -11,9 +11,9 @@ if [ ! -d $HOME/.oh-my-zsh ]; then
 	git clone https://github.com/zsh-users/zsh-syntax-highlighting ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
 fi
 
-if [ command -v nvim >/dev/null 2>&1 ]; then
+if command -v nvim >/dev/null 2>&1; then
 	export EDITOR="nvim"
-elif [ command -v vim >/dev/null 2>&1 ]; then
+elif command -v vim >/dev/null 2>&1; then
 	export EDITOR="vim"
 else
 	export EDITOR="nano"
@@ -88,7 +88,7 @@ autoload -U compinit && compinit
 
 source $ZSH/oh-my-zsh.sh
 
-if [ -f /usr/share/doc/pkgfile/command-not-found.zsh ]; then
+if [[ -f /usr/share/doc/pkgfile/command-not-found.zsh ]]; then
 	source /usr/share/doc/pkgfile/command-not-found.zsh
 fi
 
@@ -124,7 +124,7 @@ alias fortune="fortune | ponysay"
 alias l="ls -lah --color"
 alias ds="du --max-depth=1 -h"
 
-if [ command -v thefuck >/dev/null 2>&1 ]; then
+if command -v thefuck >/dev/null 2>&1; then
 	eval "$(thefuck --alias)"
 fi
 
@@ -141,7 +141,7 @@ man() {
 	man "$@"
 }
 
-if [ command -v neofetch >/dev/null 2>&1 ]; then
+if command -v neofetch >/dev/null 2>&1; then
 	alias clear="clear; neofetch"
 	neofetch
 fi
