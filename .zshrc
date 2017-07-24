@@ -1,6 +1,6 @@
 # Bytewave's .zshrc
 
-if [ ! -d $HOME/.oh-my-zsh ]; then
+if [[ ! -d $HOME/.oh-my-zsh ]]; then
 	echo "oh-my-zsh is not installed!"
 	echo "Downloading and installing..."
 	echo "Cloning oh-my-zsh..."
