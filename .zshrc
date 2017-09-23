@@ -15,6 +15,8 @@ export BROWSER="/usr/bin/google-chrome-stable"
 export TERMINAL="termite"
 export PAGER="less"
 
+export PATH="$HOME/bin:$PATH"
+
 export QT_STYLE_OVERRIDE="gtk"
 
 # Path to your oh-my-zsh installation.
@@ -79,7 +81,13 @@ autoload -U compinit && compinit
 
 source $ZSH/oh-my-zsh.sh
 
-source /usr/share/doc/pkgfile/command-not-found.zsh
+if [[ -s '/usr/share/doc/pkgfile/command-not-found.zsh' ]]; then
+	source /usr/share/doc/pkgfile/command-not-found.zsh
+fi
+
+if [[ -s '/etc/zsh_command_not_found' ]]; then
+	source '/etc/zsh_command_not_found'
+fi
 
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
@@ -105,7 +113,7 @@ source /usr/share/doc/pkgfile/command-not-found.zsh
 # Aliases
 alias zshconfig="$EDITOR ~/.zshrc"
 alias nvimconfig="$EDITOR ~/.config/nvim/init.vim"
-alias i3config="$EDITOR ~/.config/i3/config"
+#alias i3config="$EDITOR ~/.config/i3/config"
 alias neofetchconfig="$EDITOR ~/.config/neofetch/config"
 alias clear="clear; neofetch"
 alias tree="tree -C"
