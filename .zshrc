@@ -1,15 +1,24 @@
 # Bytewave's .zshrc
 
-if [ ! -d $HOME/.oh-my-zsh ]; then
+if [[ ! -d $HOME/.oh-my-zsh ]]; then
 	echo "oh-my-zsh is not installed!"
 	echo "Downloading and installing..."
 	echo "Cloning oh-my-zsh..."
 	git clone git://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
 	echo "Cloning plugins (zsh-completions)..."
 	git clone https://github.com/zsh-users/zsh-completions ~/.oh-my-zsh/custom/plugins/zsh-completions
+	echo "Cloning plugins (zsh-syntax-highlighting)..."
+	git clone https://github.com/zsh-users/zsh-syntax-highlighting ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
 fi
 
-export EDITOR="nvim"
+if command -v nvim >/dev/null 2>&1; then
+	export EDITOR="nvim"
+elif command -v vim >/dev/null 2>&1; then
+	export EDITOR="vim"
+else
+	export EDITOR="nano"
+fi
+
 export VISUAL="$EDITOR"
 export BROWSER="/usr/bin/google-chrome-stable"
 export TERMINAL="termite"
@@ -72,7 +81,7 @@ COMPLETION_WAITING_DOTS="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git zsh-completions)
+plugins=(git zsh-completions zsh-syntax-highlighting)
 
 # Reload completions
 autoload -U compinit && compinit
@@ -81,12 +90,8 @@ autoload -U compinit && compinit
 
 source $ZSH/oh-my-zsh.sh
 
-if [[ -s '/usr/share/doc/pkgfile/command-not-found.zsh' ]]; then
+if [[ -f /usr/share/doc/pkgfile/command-not-found.zsh ]]; then
 	source /usr/share/doc/pkgfile/command-not-found.zsh
-fi
-
-if [[ -s '/etc/zsh_command_not_found' ]]; then
-	source '/etc/zsh_command_not_found'
 fi
 
 # You may need to manually set your language environment
@@ -115,12 +120,15 @@ alias zshconfig="$EDITOR ~/.zshrc"
 alias nvimconfig="$EDITOR ~/.config/nvim/init.vim"
 #alias i3config="$EDITOR ~/.config/i3/config"
 alias neofetchconfig="$EDITOR ~/.config/neofetch/config"
-alias clear="clear; neofetch"
+
 alias tree="tree -C"
 alias fortune="fortune | ponysay"
 alias l="ls -lah --color"
 alias ds="du --max-depth=1 -h"
-eval "$(thefuck --alias)"
+
+if command -v thefuck >/dev/null 2>&1; then
+	eval "$(thefuck --alias)"
+fi
 
 # Pretty man pages
 man() {
@@ -135,4 +143,7 @@ man() {
 	man "$@"
 }
 
-neofetch
+if command -v neofetch >/dev/null 2>&1; then
+	alias clear="clear; neofetch"
+	neofetch
+fi
