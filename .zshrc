@@ -1,5 +1,8 @@
 # Bytewave's .zshrc
 
+# Prevent commands prefixed with space from being recorded byt he shell history
+setopt histignorespace
+
 if [[ ! -d $HOME/.oh-my-zsh ]]; then
 	echo "oh-my-zsh is not installed!"
 	echo "Downloading and installing..."
