@@ -129,6 +129,9 @@ alias fortune="fortune | ponysay"
 alias l="ls -lah --color"
 alias ds="du --max-depth=1 -h"
 
+# I hate this switch
+alias pacaur="trizen"
+
 if command -v thefuck >/dev/null 2>&1; then
 	eval "$(thefuck --alias)"
 fi
