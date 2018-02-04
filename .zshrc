@@ -14,8 +14,8 @@ if [[ ! -d $HOME/.oh-my-zsh ]]; then
 	git clone https://github.com/zsh-users/zsh-syntax-highlighting ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
 fi
 
-if command -v nvim >/dev/null 2>&1; then
-	export EDITOR="nvim"
+if command -v code >/dev/null 2>&1; then
+	export EDITOR="code"
 elif command -v vim >/dev/null 2>&1; then
 	export EDITOR="vim"
 else
@@ -27,7 +27,13 @@ export BROWSER="/usr/bin/google-chrome-stable"
 export TERMINAL="termite"
 export PAGER="less"
 
+eval $(luarocks path --bin)
+
 export PATH="$HOME/bin:$PATH"
+
+npm-exec () {
+	(PATH=$(npm bin):$PATH; eval "$@")
+}
 
 export QT_STYLE_OVERRIDE="gtk"
 
@@ -84,7 +90,9 @@ COMPLETION_WAITING_DOTS="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git composer zsh-completions zsh-syntax-highlighting)
+plugins=(git composer zsh-completions colorize ssh-agent zsh-syntax-highlighting)
+
+zstyle :omz:plugins:ssh-agent identities gitlab aur github
 
 # Reload completions
 autoload -U compinit && compinit
