@@ -15,7 +15,7 @@ if [[ ! -d $HOME/.oh-my-zsh ]]; then
 fi
 
 if command -v code >/dev/null 2>&1; then
-	export EDITOR="code"
+	export EDITOR="code --wait"
 elif command -v vim >/dev/null 2>&1; then
 	export EDITOR="vim"
 else
