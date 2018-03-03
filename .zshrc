@@ -29,7 +29,9 @@ export PAGER="less"
 
 eval $(luarocks path --bin)
 
-export PATH="$HOME/bin:$PATH"
+export GOPATH="$(go env GOPATH)"
+
+export PATH="$HOME/bin:$GOPATH/bin:$PATH"
 
 npm-exec () {
 	(PATH=$(npm bin):$PATH; eval "$@")
