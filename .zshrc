@@ -15,7 +15,7 @@ if [[ ! -d $HOME/.oh-my-zsh ]]; then
 fi
 
 if command -v code >/dev/null 2>&1; then
-	export EDITOR="code --wait"
+	export EDITOR="vs-code --wait"
 elif command -v vim >/dev/null 2>&1; then
 	export EDITOR="vim"
 else
@@ -26,6 +26,11 @@ export VISUAL="$EDITOR"
 export BROWSER="/usr/bin/google-chrome-stable"
 export TERMINAL="termite"
 export PAGER="less"
+
+# temporary workaround for corrupted terminfo database
+if [ $TERM = "xterm-256color" ]; then
+	export TERM="xterm"
+fi
 
 eval $(luarocks path --bin)
 
@@ -92,7 +97,7 @@ COMPLETION_WAITING_DOTS="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git composer zsh-completions colorize ssh-agent zsh-syntax-highlighting)
+plugins=(git composer zsh-completions colorize yarn docker-compose ssh-agent zsh-syntax-highlighting)
 
 zstyle :omz:plugins:ssh-agent identities gitlab aur github
 
