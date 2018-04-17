@@ -14,6 +14,13 @@ if [[ ! -d $HOME/.oh-my-zsh ]]; then
 	git clone https://github.com/zsh-users/zsh-syntax-highlighting ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
 fi
 
+if [[ ! -d $HOME/.zplug ]]; then
+	echo "zplug is not installed!"
+	echo "Downloading and installing..."
+	echo "Cloning zplug..."
+	git clone https://github.com/zplug/zplug ~/.zplug
+fi
+
 if command -v code >/dev/null 2>&1; then
 	export EDITOR="vs-code --wait"
 elif command -v vim >/dev/null 2>&1; then
@@ -97,7 +104,34 @@ COMPLETION_WAITING_DOTS="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git composer zsh-completions colorize yarn docker-compose ssh-agent zsh-syntax-highlighting)
+plugins=()
+
+### ZPLUG
+source ~/.zplug/init.zsh
+
+zplug 'zplug/zplug', hook-build:'zplug --self-manage'
+zplug 'plugins/git', from:oh-my-zsh
+zplug 'plugins/composer', from:oh-my-zsh
+zplug 'plugins/colorize', from:oh-my-zsh
+zplug 'plugins/yarn', from:oh-my-zsh
+zplug 'plugins/ssh-agent', from:oh-my-zsh
+zplug 'plugins/docker-compose', from:oh-my-zsh
+zplug 'zsh-users/zsh-syntax-highlighting', defer:2
+zplug 'zsh-users/zsh-completions', depth:1
+zplug 'zsh-users/zsh-autosuggestions'
+zplug 'zsh-users/zsh-history-substring-search', defer:3
+
+# Install plugins if there are plugins that have not been installed
+if ! zplug check --verbose; then
+    printf "Install? [y/N]: "
+    if read -q; then
+        echo; zplug install
+    fi
+fi
+
+# Then, source plugins and add commands to $PATH
+zplug load --verbose
+### END ZPLUG
 
 zstyle :omz:plugins:ssh-agent identities gitlab aur github
 
