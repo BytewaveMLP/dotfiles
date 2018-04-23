@@ -8,10 +8,6 @@ if [[ ! -d $HOME/.oh-my-zsh ]]; then
 	echo "Downloading and installing..."
 	echo "Cloning oh-my-zsh..."
 	git clone git://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
-	echo "Cloning plugins (zsh-completions)..."
-	git clone https://github.com/zsh-users/zsh-completions ~/.oh-my-zsh/custom/plugins/zsh-completions
-	echo "Cloning plugins (zsh-syntax-highlighting)..."
-	git clone https://github.com/zsh-users/zsh-syntax-highlighting ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
 fi
 
 if [[ ! -d $HOME/.zplug ]]; then
