@@ -40,7 +40,7 @@ ask() {
 	done
 }
 
-dir=$(dirname "$0")
+dir=$(dirname "$(realpath "$0")")
 
 if ask "Install symlink for .zshrc?" Y; then
 	ln -si ${dir}/.zshrc ${HOME}/.zshrc
