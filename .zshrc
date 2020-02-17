@@ -1,6 +1,6 @@
 # Bytewave's .zshrc
 
-# Prevent commands prefixed with space from being recorded byt he shell history
+# Prevent commands prefixed with space from being recorded by the shell history
 setopt histignorespace
 
 if [[ ! -d $HOME/.oh-my-zsh ]]; then
@@ -18,7 +18,7 @@ if [[ ! -d $HOME/.zplug ]]; then
 fi
 
 if command -v code >/dev/null 2>&1; then
-	export EDITOR="vs-code --wait"
+	export EDITOR="code --wait"
 elif command -v vim >/dev/null 2>&1; then
 	export EDITOR="vim"
 else
@@ -35,11 +35,16 @@ if [ $TERM = "xterm-256color" ]; then
 	export TERM="xterm"
 fi
 
-eval $(luarocks path --bin)
+if command -v luarocks >/dev/null 2>&1; then
+	eval $(luarocks path --bin)
+fi
 
-export GOPATH="$(go env GOPATH)"
+if command -v go >/dev/null 2>&1; then
+	export GOPATH="$(go env GOPATH)"
+	export PATH="$GOPATH/bin:$PATH"
+fi
 
-export PATH="$HOME/bin:$GOPATH/bin:$PATH"
+export PATH="$HOME/bin:$PATH"
 
 npm-exec () {
 	(PATH=$(npm bin):$PATH; eval "$@")
@@ -48,7 +53,7 @@ npm-exec () {
 export QT_STYLE_OVERRIDE="gtk"
 
 # Path to your oh-my-zsh installation.
-  export ZSH=$HOME/.oh-my-zsh
+export ZSH=$HOME/.oh-my-zsh
 
 export TZ=US/Central
 
