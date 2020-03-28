@@ -195,3 +195,7 @@ if command -v neofetch >/dev/null 2>&1; then
 	alias clear="clear; neofetch"
 	neofetch
 fi
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/zsh_completion" ] && \. "$NVM_DIR/zsh_completion"  # This loads nvm bash_completion
