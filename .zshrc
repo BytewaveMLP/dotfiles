@@ -201,6 +201,12 @@ if command -v neofetch >/dev/null 2>&1; then
 	neofetch
 fi
 
+if grep -qi "Microsoft" /proc/version; then
+	export SSH_AUTH_SOCK="/mnt/c/wsl-ssh-pageant/ssh-agent.sock"
+else
+	export SSH_AUTH_SOCK="$(gpgconf --list-dirs agent-ssh-socket)"
+fi
+
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/zsh_completion" ] && \. "$NVM_DIR/zsh_completion"  # This loads nvm bash_completion
