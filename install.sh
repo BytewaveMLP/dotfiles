@@ -46,6 +46,10 @@ if ask "Install symlink for .zshrc?" Y; then
 	ln -si ${dir}/.zshrc ${HOME}/.zshrc
 fi
 
+if ask "Install symlink for .vimrc?" Y; then
+	ln -si ${dir}/.vimrc ${HOME}/.vimrc
+fi
+
 if ask "Install symlink for .xinitrc?" N; then
 	ln -si ${dir}/.xinitrc ${HOME}/.xinitrc
 fi
