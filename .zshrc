@@ -201,10 +201,14 @@ if command -v neofetch >/dev/null 2>&1; then
 	neofetch
 fi
 
+export SSH_AUTH_SOCK="$(gpgconf --list-dirs agent-ssh-socket)"
+
+# WSL-specific overrides
 if grep -qi "Microsoft" /proc/version; then
 	export SSH_AUTH_SOCK="/mnt/c/wsl-ssh-pageant/ssh-agent.sock"
-else
-	export SSH_AUTH_SOCK="$(gpgconf --list-dirs agent-ssh-socket)"
+
+	export DISPLAY=$(ip route  | awk '/default via / {print $3; exit}' 2>/dev/null):0
+	export LIBGL_ALWAYS_INDIRECT=1
 fi
 
 export NVM_DIR="$HOME/.nvm"
