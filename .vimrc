@@ -17,6 +17,7 @@ set number
 set ruler
 set visualbell
 set tabstop=4
+set shiftwidth=4
 set encoding=utf-8
 
 set wrap
