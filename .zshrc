@@ -30,11 +30,6 @@ export BROWSER="/usr/bin/google-chrome-stable"
 export TERMINAL="termite"
 export PAGER="less"
 
-# temporary workaround for corrupted terminfo database
-if [ $TERM = "xterm-256color" ]; then
-	export TERM="xterm"
-fi
-
 if command -v luarocks >/dev/null 2>&1; then
 	eval $(luarocks path --bin)
 fi
@@ -176,7 +171,7 @@ alias neofetchconfig="$EDITOR ~/.config/neofetch/config"
 
 alias tree="tree -C"
 alias fortune="fortune | ponysay"
-alias l="ls -lAhF --color"
+alias l="ls -lahF --color"
 alias ds="du --max-depth=1 -h"
 
 if command -v thefuck >/dev/null 2>&1; then
