@@ -112,10 +112,11 @@ zplug 'plugins/git', from:oh-my-zsh
 zplug 'plugins/yarn', from:oh-my-zsh
 # zplug 'plugins/ssh-agent', from:oh-my-zsh
 zplug 'plugins/docker-compose', from:oh-my-zsh
+# zplug 'plugins/fzf', from:oh-my-zsh
 zplug 'zsh-users/zsh-syntax-highlighting', defer:2
 zplug 'zsh-users/zsh-completions', depth:1
 zplug 'zsh-users/zsh-autosuggestions'
-zplug 'zsh-users/zsh-history-substring-search', defer:3
+# zplug 'zsh-users/zsh-history-substring-search', defer:3
 
 # Install plugins if there are plugins that have not been installed
 if ! zplug check --verbose; then
@@ -209,3 +210,5 @@ fi
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/zsh_completion" ] && \. "$NVM_DIR/zsh_completion"  # This loads nvm bash_completion
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
