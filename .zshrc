@@ -39,7 +39,7 @@ if command -v go >/dev/null 2>&1; then
 	export PATH="$GOPATH/bin:$PATH"
 fi
 
-export PATH="$HOME/bin:$PATH"
+export PATH="$HOME/.local/bin:$HOME/bin:$PATH"
 
 npm-exec () {
 	(PATH=$(npm bin):$PATH; eval "$@")
@@ -201,14 +201,22 @@ export SSH_AUTH_SOCK="$(gpgconf --list-dirs agent-ssh-socket)"
 
 # WSL-specific overrides
 if grep -qi "Microsoft" /proc/version; then
-	export SSH_AUTH_SOCK="/mnt/c/wsl-ssh-pageant/ssh-agent.sock"
-
 	export DISPLAY=$(ip route  | awk '/default via / {print $3; exit}' 2>/dev/null):0
 	export LIBGL_ALWAYS_INDIRECT=1
+
+	if command -v gpg-agent-relay >/dev/null 2>&1; then
+		export SSH_AUTH_SOCK="$HOME/.gnupg/S.gpg-agent.ssh"
+		gpg-agent-relay start
+	fi
 fi
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/zsh_completion" ] && \. "$NVM_DIR/zsh_completion"  # This loads nvm bash_completion
+
+if [ -d "$HOME/.rbenv" ]; then
+	export PATH="$HOME/.rbenv/bin:$PATH"
+	eval "$(rbenv init -)"
+fi
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
