@@ -50,7 +50,7 @@ export QT_STYLE_OVERRIDE="gtk"
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
 
-export TZ=US/Central
+export TZ=America/Chicago
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
@@ -202,7 +202,7 @@ export SSH_AUTH_SOCK="$(gpgconf --list-dirs agent-ssh-socket)"
 # WSL-specific overrides
 if grep -qi "Microsoft" /proc/version; then
 	export DISPLAY=$(ip route  | awk '/default via / {print $3; exit}' 2>/dev/null):0
-	export LIBGL_ALWAYS_INDIRECT=1
+	export LIBGL_ALWAYS_INDIRECT=0
 
 	if command -v gpg-agent-relay >/dev/null 2>&1; then
 		export SSH_AUTH_SOCK="$HOME/.gnupg/S.gpg-agent.ssh"
@@ -220,3 +220,5 @@ if [ -d "$HOME/.rbenv" ]; then
 fi
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+[ -f ~/.cargo/env ] && source ~/.cargo/env # set up cargo
