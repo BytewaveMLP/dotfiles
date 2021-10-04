@@ -201,8 +201,8 @@ export SSH_AUTH_SOCK="$(gpgconf --list-dirs agent-ssh-socket)"
 
 # WSL-specific overrides
 if grep -qi "Microsoft" /proc/version; then
-	export DISPLAY=$(ip route  | awk '/default via / {print $3; exit}' 2>/dev/null):0
-	export LIBGL_ALWAYS_INDIRECT=0
+	#export DISPLAY=$(ip route  | awk '/default via / {print $3; exit}' 2>/dev/null):0
+	#export LIBGL_ALWAYS_INDIRECT=0
 
 	if command -v gpg-agent-relay >/dev/null 2>&1; then
 		export SSH_AUTH_SOCK="$HOME/.gnupg/S.gpg-agent.ssh"
