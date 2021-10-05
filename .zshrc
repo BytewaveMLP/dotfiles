@@ -216,8 +216,9 @@ export NVM_DIR="$HOME/.nvm"
 
 if [ -d "$HOME/.rbenv" ]; then
 	export PATH="$HOME/.rbenv/bin:$PATH"
-	eval "$(rbenv init -)"
 fi
+
+command -v rbenv >/dev/null 2>&1 && eval "$(rbenv init -)"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
