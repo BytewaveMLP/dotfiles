@@ -116,6 +116,9 @@ zplug 'plugins/docker-compose', from:oh-my-zsh
 zplug 'zsh-users/zsh-syntax-highlighting', defer:2
 zplug 'zsh-users/zsh-completions', depth:1
 zplug 'zsh-users/zsh-autosuggestions'
+if [ "$(uname -s)" = "Darwin" ]; then
+	zplug 'plugins/macos', from:oh-my-zsh
+fi
 # zplug 'zsh-users/zsh-history-substring-search', defer:3
 
 # Install plugins if there are plugins that have not been installed
@@ -166,6 +169,7 @@ fi
 #
 # Aliases
 alias zshconfig="$EDITOR ~/.zshrc"
+alias vimconfig="$EDITOR ~/.vimrc"
 alias nvimconfig="$EDITOR ~/.config/nvim/init.vim"
 #alias i3config="$EDITOR ~/.config/i3/config"
 alias neofetchconfig="$EDITOR ~/.config/neofetch/config"
@@ -197,10 +201,12 @@ if command -v neofetch >/dev/null 2>&1; then
 	neofetch
 fi
 
-export SSH_AUTH_SOCK="$(gpgconf --list-dirs agent-ssh-socket)"
+if command -v gpgconf >/dev/null 2>&1; then
+	export SSH_AUTH_SOCK="$(gpgconf --list-dirs agent-ssh-socket)"
+fi
 
 # WSL-specific overrides
-if grep -qi "Microsoft" /proc/version; then
+if [ -f /proc/version ] && grep -qi "Microsoft" /proc/version; then
 	#export DISPLAY=$(ip route  | awk '/default via / {print $3; exit}' 2>/dev/null):0
 	#export LIBGL_ALWAYS_INDIRECT=0
 
