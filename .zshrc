@@ -233,6 +233,6 @@ command -v rbenv >/dev/null 2>&1 && eval "$(rbenv init -)"
 
 [ -f ~/.cargo/env ] && source ~/.cargo/env # set up cargo
 
-if [ "$is_macos" = true]; then
+if [ "$is_macos" = true ]; then
 	[ -f ~/.iterm2_shell_integration.zsh ] && source ~/.iterm2_shell_integration.zsh
 fi
