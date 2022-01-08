@@ -229,3 +229,5 @@ command -v rbenv >/dev/null 2>&1 && eval "$(rbenv init -)"
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 [ -f ~/.cargo/env ] && source ~/.cargo/env # set up cargo
+
+[ -f ~/.iterm2_shell_integration.zsh ] && source ~/.iterm2_shell_integration.zsh
