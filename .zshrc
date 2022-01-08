@@ -3,6 +3,9 @@
 # Prevent commands prefixed with space from being recorded by the shell history
 setopt histignorespace
 
+host_platform="$(uname -s)"
+is_macos="$([ "$host_platform" = "Darwin" ] && echo true)"
+
 if [[ ! -d $HOME/.oh-my-zsh ]]; then
 	echo "oh-my-zsh is not installed!"
 	echo "Downloading and installing..."
@@ -116,7 +119,7 @@ zplug 'plugins/docker-compose', from:oh-my-zsh
 zplug 'zsh-users/zsh-syntax-highlighting', defer:2
 zplug 'zsh-users/zsh-completions', depth:1
 zplug 'zsh-users/zsh-autosuggestions'
-if [ "$(uname -s)" = "Darwin" ]; then
+if [ "$is_macos" = true ]; then
 	zplug 'plugins/macos', from:oh-my-zsh
 fi
 # zplug 'zsh-users/zsh-history-substring-search', defer:3
@@ -230,4 +233,6 @@ command -v rbenv >/dev/null 2>&1 && eval "$(rbenv init -)"
 
 [ -f ~/.cargo/env ] && source ~/.cargo/env # set up cargo
 
-[ -f ~/.iterm2_shell_integration.zsh ] && source ~/.iterm2_shell_integration.zsh
+if [ "$is_macos" = true]; then
+	[ -f ~/.iterm2_shell_integration.zsh ] && source ~/.iterm2_shell_integration.zsh
+fi
