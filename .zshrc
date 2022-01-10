@@ -115,6 +115,8 @@ zplug 'plugins/git', from:oh-my-zsh
 zplug 'plugins/yarn', from:oh-my-zsh
 # zplug 'plugins/ssh-agent', from:oh-my-zsh
 zplug 'plugins/docker-compose', from:oh-my-zsh
+zplug "plugins/nvm", from:oh-my-zsh
+zplug "plugins/rbenv", from:oh-my-zsh
 # zplug 'plugins/fzf', from:oh-my-zsh
 zplug 'zsh-users/zsh-syntax-highlighting', defer:2
 zplug 'zsh-users/zsh-completions', depth:1
@@ -204,6 +206,10 @@ if command -v neofetch >/dev/null 2>&1; then
 	neofetch
 fi
 
+if [ "$is_macos" = true ]; then
+	export GPG_TTY="$(tty)"
+fi
+
 if command -v gpgconf >/dev/null 2>&1; then
 	export SSH_AUTH_SOCK="$(gpgconf --list-dirs agent-ssh-socket)"
 fi
@@ -234,5 +240,6 @@ command -v rbenv >/dev/null 2>&1 && eval "$(rbenv init -)"
 [ -f ~/.cargo/env ] && source ~/.cargo/env # set up cargo
 
 if [ "$is_macos" = true ]; then
+	[ -d /opt/homebrew ] && eval "$(/opt/homebrew/bin/brew shellenv)"
 	[ -f ~/.iterm2_shell_integration.zsh ] && source ~/.iterm2_shell_integration.zsh
 fi
