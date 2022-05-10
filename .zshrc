@@ -212,7 +212,7 @@ if command -v neofetch >/dev/null 2>&1; then
 	neofetch
 fi
 
-if command -v gpgconf >/dev/null 2>&1; then
+if [ -z "$SSH_AUTH_SOCK" ] && command -v gpgconf >/dev/null 2>&1; then
 	export SSH_AUTH_SOCK="$(gpgconf --list-dirs agent-ssh-socket)"
 fi
 
