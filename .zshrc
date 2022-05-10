@@ -16,7 +16,7 @@ if [[ ! -d $HOME/.oh-my-zsh ]]; then
 	echo "oh-my-zsh is not installed!"
 	echo "Downloading and installing..."
 	echo "Cloning oh-my-zsh..."
-	git clone git://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
+	git clone https://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
 fi
 
 if [[ ! -d $HOME/.zplug ]]; then
