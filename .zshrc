@@ -19,7 +19,7 @@ if [[ ! -d $HOME/.oh-my-zsh ]]; then
 	echo "oh-my-zsh is not installed!"
 	echo "Downloading and installing..."
 	echo "Cloning oh-my-zsh..."
-	git clone git://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
+	git clone https://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
 fi
 
 if [[ ! -d $HOME/.zplug ]]; then
@@ -217,7 +217,7 @@ if command -v neofetch >/dev/null 2>&1; then
 	neofetch
 fi
 
-if command -v gpgconf >/dev/null 2>&1; then
+if [ -z "$SSH_AUTH_SOCK" ] && command -v gpgconf >/dev/null 2>&1; then
 	export SSH_AUTH_SOCK="$(gpgconf --list-dirs agent-ssh-socket)"
 fi
 
