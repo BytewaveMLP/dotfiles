@@ -64,7 +64,7 @@ export QT_STYLE_OVERRIDE="gtk"
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
 
-export TZ=America/Chicago
+export TZ=America/Toronto
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
@@ -231,10 +231,6 @@ if [ -f /proc/version ] && grep -qi "Microsoft" /proc/version; then
 		gpg-agent-relay start
 	fi
 fi
-
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/zsh_completion" ] && \. "$NVM_DIR/zsh_completion"  # This loads nvm bash_completion
 
 if [ -d "$HOME/.rbenv" ]; then
 	export PATH="$HOME/.rbenv/bin:$PATH"
