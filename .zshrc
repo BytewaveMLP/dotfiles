@@ -7,7 +7,10 @@ host_platform="$(uname -s)"
 is_macos="$([ "$host_platform" = "Darwin" ] && echo true)"
 
 if [ "$is_macos" = true ]; then
-	[ -d /opt/homebrew ] && eval "$(/opt/homebrew/bin/brew shellenv)"
+	if [ -d /opt/homebrew ]; then
+		eval "$(/opt/homebrew/bin/brew shellenv)"
+		FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
+	fi
 
 	export GPG_TTY="$(tty)"
 fi
@@ -47,6 +50,8 @@ if command -v go >/dev/null 2>&1; then
 	export GOPATH="$(go env GOPATH)"
 	export PATH="$GOPATH/bin:$PATH"
 fi
+
+export NVM_AUTOLOAD=1
 
 export PATH="$HOME/.local/bin:$HOME/bin:$PATH"
 
