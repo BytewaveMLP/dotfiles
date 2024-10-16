@@ -5,6 +5,7 @@ setopt histignorespace
 
 host_platform="$(uname -s)"
 is_macos="$([ "$host_platform" = "Darwin" ] && echo true)"
+is_wsl="$([[ $(grep 'Microsoft' /proc/version) ]])"
 
 if [ "$is_macos" = true ]; then
 	if [ -d /opt/homebrew ]; then
@@ -13,6 +14,11 @@ if [ "$is_macos" = true ]; then
 	fi
 
 	export GPG_TTY="$(tty)"
+	export BROWSER="open"
+fi
+
+if [ "$is_wsl" = true ]; then
+	export BROWSER="wslview"
 fi
 
 if [[ ! -d $HOME/.oh-my-zsh ]]; then
@@ -38,20 +44,9 @@ else
 fi
 
 export VISUAL="$EDITOR"
-export BROWSER="/usr/bin/google-chrome-stable"
-export TERMINAL="termite"
 export PAGER="less"
 
-if command -v luarocks >/dev/null 2>&1; then
-	eval $(luarocks path --bin)
-fi
-
-if command -v go >/dev/null 2>&1; then
-	export GOPATH="$(go env GOPATH)"
-	export PATH="$GOPATH/bin:$PATH"
-fi
-
-export NVM_AUTOLOAD=1
+zstyle ':omz:plugins:nvm' autoload yes
 
 export PATH="$HOME/.local/bin:$HOME/bin:$PATH"
 
@@ -120,21 +115,23 @@ plugins=()
 source ~/.zplug/init.zsh
 
 zplug 'zplug/zplug', hook-build:'zplug --self-manage'
-zplug 'plugins/git', from:oh-my-zsh
-# zplug 'plugins/composer', from:oh-my-zsh
-# zplug 'plugins/colorize', from:oh-my-zsh
-zplug 'plugins/yarn', from:oh-my-zsh
-# zplug 'plugins/ssh-agent', from:oh-my-zsh
+zplug 'plugins/colored-man-pages', from:oh-my-zsh
+zplug 'plugins/command-not-found', from:oh-my-zsh
 zplug 'plugins/docker-compose', from:oh-my-zsh
-zplug "plugins/nvm", from:oh-my-zsh
-zplug "plugins/rbenv", from:oh-my-zsh
-# zplug 'plugins/fzf', from:oh-my-zsh
-zplug 'zsh-users/zsh-syntax-highlighting', defer:2
-zplug 'zsh-users/zsh-completions', depth:1
-zplug 'zsh-users/zsh-autosuggestions'
+zplug 'plugins/fzf', from:oh-my-zsh
+zplug 'plugins/gh', from:oh-my-zsh
+zplug 'plugins/git', from:oh-my-zsh
 if [ "$is_macos" = true ]; then
 	zplug 'plugins/macos', from:oh-my-zsh
 fi
+zplug 'plugins/nvm', from:oh-my-zsh
+zplug 'plugins/ssh-agent', from:oh-my-zsh
+zplug 'plugins/rails', from:oh-my-zsh
+zplug 'plugins/rbenv', from:oh-my-zsh
+zplug 'plugins/yarn', from:oh-my-zsh
+zplug 'zsh-users/zsh-autosuggestions'
+zplug 'zsh-users/zsh-completions', depth:1
+zplug 'zsh-users/zsh-syntax-highlighting', defer:2
 # zplug 'zsh-users/zsh-history-substring-search', defer:3
 
 # Install plugins if there are plugins that have not been installed
@@ -146,10 +143,17 @@ if ! zplug check --verbose; then
 fi
 
 # Then, source plugins and add commands to $PATH
-zplug load --verbose
+zplug load
 ### END ZPLUG
 
-zstyle :omz:plugins:ssh-agent identities gitlab aur github
+zstyle :omz:plugins:sshagent agent-forwarding yes
+zstyle :omz:plugins:ssh-agent identities id_ed25519_sk_rk_28ad202d7ae076cf6cd3b3a07464161a3ccca407e2bb037926fe98c00e43e702
+
+if [ "$is_wsl" = true ]; then
+	if [ -f /usr/lib/libwindowsfidobridge.so ]; then
+		zstyle :omz:plugins:ssh-agent ssh-add-args -S /usr/lib/libwindowsfidobridge.so
+	fi
+fi
 
 # Reload completions
 autoload -U compinit && compinit
@@ -186,61 +190,16 @@ fi
 # Aliases
 alias zshconfig="$EDITOR ~/.zshrc"
 alias vimconfig="$EDITOR ~/.vimrc"
-alias nvimconfig="$EDITOR ~/.config/nvim/init.vim"
-#alias i3config="$EDITOR ~/.config/i3/config"
-alias neofetchconfig="$EDITOR ~/.config/neofetch/config"
 
 alias tree="tree -C"
 alias fortune="fortune | ponysay"
 alias l="ls -lahF --color"
 alias ds="du --max-depth=1 -h"
 
-if command -v thefuck >/dev/null 2>&1; then
-	eval "$(thefuck --alias)"
+if command -v fastfetch >/dev/null 2>&1; then
+	alias clear="clear; fastfetch"
+	fastfetch
 fi
-
-# Pretty man pages
-man() {
-	env \
-	LESS_TERMCAP_mb=$'\e[01;31m' \
-	LESS_TERMCAP_md=$'\e[01;31m' \
-	LESS_TERMCAP_me=$'\e[0m' \
-	LESS_TERMCAP_se=$'\e[0m' \
-	LESS_TERMCAP_so=$'\e[01;44;33m' \
-	LESS_TERMCAP_ue=$'\e[0m' \
-	LESS_TERMCAP_us=$'\e[01;32m' \
-	man "$@"
-}
-
-if command -v neofetch >/dev/null 2>&1; then
-	alias clear="clear; neofetch"
-	neofetch
-fi
-
-if [ -z "$SSH_AUTH_SOCK" ] && command -v gpgconf >/dev/null 2>&1; then
-	export SSH_AUTH_SOCK="$(gpgconf --list-dirs agent-ssh-socket)"
-fi
-
-# WSL-specific overrides
-if [ -f /proc/version ] && grep -qi "Microsoft" /proc/version; then
-	#export DISPLAY=$(ip route  | awk '/default via / {print $3; exit}' 2>/dev/null):0
-	#export LIBGL_ALWAYS_INDIRECT=0
-
-	if command -v gpg-agent-relay >/dev/null 2>&1; then
-		export SSH_AUTH_SOCK="$HOME/.gnupg/S.gpg-agent.ssh"
-		gpg-agent-relay start
-	fi
-fi
-
-if [ -d "$HOME/.rbenv" ]; then
-	export PATH="$HOME/.rbenv/bin:$PATH"
-fi
-
-command -v rbenv >/dev/null 2>&1 && eval "$(rbenv init -)"
-
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
-[ -f ~/.cargo/env ] && source ~/.cargo/env # set up cargo
 
 if [ "$is_macos" = true ]; then
 	[ -f ~/.iterm2_shell_integration.zsh ] && source ~/.iterm2_shell_integration.zsh
