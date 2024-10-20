@@ -5,7 +5,7 @@ setopt histignorespace
 
 host_platform="$(uname -s)"
 is_macos="$([ "$host_platform" = "Darwin" ] && echo true)"
-is_wsl="$([[ $(grep 'Microsoft' /proc/version) ]])"
+is_wsl="$(grep -i 'wsl' /proc/version > /dev/null && echo true)"
 
 if [ "$is_macos" = true ]; then
 	if [ -d /opt/homebrew ]; then
