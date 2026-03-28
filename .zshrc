@@ -124,11 +124,9 @@ zplug 'plugins/git', from:oh-my-zsh
 if [ "$is_macos" = true ]; then
 	zplug 'plugins/macos', from:oh-my-zsh
 fi
-zplug 'plugins/nvm', from:oh-my-zsh
+zplug 'plugins/mise', from:oh-my-zsh
 zplug 'plugins/ssh-agent', from:oh-my-zsh
 zplug 'plugins/rails', from:oh-my-zsh
-zplug 'plugins/rbenv', from:oh-my-zsh
-zplug 'plugins/yarn', from:oh-my-zsh
 zplug 'zsh-users/zsh-autosuggestions'
 zplug 'zsh-users/zsh-completions', depth:1
 zplug 'zsh-users/zsh-syntax-highlighting', defer:2
