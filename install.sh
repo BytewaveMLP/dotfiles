@@ -88,22 +88,9 @@ if ask "Install symlinks for bin/?" Y; then
 	ln -si ${dir}/bin/* ${HOME}/bin/
 fi
 
-if ask "Install symlink for .gdbinit?" Y; then
-	ln -si ${dir}/.gdbinit ${HOME}/.gdbinit
-	ln -si ${dir}/.gdb-ignore-errors.py ${HOME}/.gdb-ignore-errors.py
-fi
-
-if ask "Install PEDA for gdb?" Y; then
-	git clone https://github.com/longld/peda.git ~/peda
-fi
-
 if ask "Install Neobundle for Neovim?" N; then
 	curl https://raw.githubusercontent.com/Shougo/neobundle.vim/master/bin/install.sh > ${HOME}/neobundle-install.sh
 	sh ${HOME}/neobundle-install.sh
 	rm ${HOME}/neobundle-install.sh
 fi
 
-if ask "Install wallpaper?" N; then
-	ln -si ${dir}/.wallpaper.jpg ${HOME}/.wallpaper.jpg
-	ln -si ${dir}/.fehbg ${HOME}/.fehbg
-fi
